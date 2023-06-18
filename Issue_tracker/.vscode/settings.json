@@ -3,10 +3,11 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/samuel/Code_bin/AP-group-2-project/apache-log4j-2.13.3-bin/log4j-spring-cloud-config-client-2.13.3-sources.jar",
-        "/home/samuel/Code_bin/AP-group-2-project/apache-log4j-2.13.3-bin/log4j-core-2.13.3.jar",
-        "/home/samuel/Code_bin/AP-group-2-project/apache-log4j-2.13.3-bin/log4j-api-2.13.3.jar",
         "b:\\Code_bin\\AP-group-2-project\\apache-log4j-2.13.3-bin\\log4j-api-2.13.3.jar",
-        "b:\\Code_bin\\AP-group-2-project\\apache-log4j-2.13.3-bin\\log4j-core-2.13.3.jar"
+        "b:\\Code_bin\\AP-group-2-project\\apache-log4j-2.13.3-bin\\log4j-core-2.13.3.jar",
+        "apache-log4j-2.13.3-bin/log4j-spring-cloud-config-client-2.13.3-sources.jar",
+        "apache-log4j-2.13.3-bin/log4j-core-2.13.3.jar",
+        "apache-log4j-2.13.3-bin/log4j-api-2.13.3.jar"
     ],
     "java.project.sourcePaths": [
         "src/properties",
