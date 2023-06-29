@@ -2,6 +2,9 @@
 
 public class Server {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        db_man database = new db_man();
+
+        database.test();// test database connection
     }
+
 }
