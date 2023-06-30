@@ -52,10 +52,15 @@ public class db_man {
                     Customer customer_tmp = new Customer();
 
                     customer_tmp.setCusId(our_resultSet.getString(1));
-                    customer_tmp.setPassword("");
+                    customer_tmp.setPassword(our_resultSet.getString(2));
+                    customer_tmp.setFirstName(our_resultSet.getString(3));
+                    customer_tmp.setLastName(our_resultSet.getString(4));
+                    customer_tmp.setEmail(our_resultSet.getString(5));
+                    customer_tmp.setTelNum(our_resultSet.getString(6));
+
                     costomerList.add(customer_tmp);
                 }
-                
+
             }
         } catch (Exception e) {
             System.out.println(e);
