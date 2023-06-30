@@ -36,21 +36,19 @@ public class db_man {
 
         String sql_query = "select * FROM customers";
 
-        // `ID`, `password`, `first_name`, `last_name`, `Email`, `Contact_number`
-
         try {
             our_Connection = DriverManager.getConnection(server_address, usernameString, passwordString);
 
             if (our_Connection != null) {
                 System.out.println("Remote server connection successful");
-                // our_Connection.close();
 
                 our_statement = our_Connection.createStatement(); // create statement
                 our_resultSet = our_statement.executeQuery(sql_query); // execute query and retrieve results/cursor
 
                 while (our_resultSet.next()) { // while there are more records
+                
                     Customer customer_tmp = new Customer();
-
+                    
                     customer_tmp.setCusId(our_resultSet.getString(1));
                     customer_tmp.setPassword(our_resultSet.getString(2));
                     customer_tmp.setFirstName(our_resultSet.getString(3));
