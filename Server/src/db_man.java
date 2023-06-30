@@ -36,11 +36,11 @@ public class db_man {
 
         String sql_query = "select * FROM customers";
 
-        // `ID`, `password`, `first_name`, `last_name`, `Email`, `Contact_number` FROM
-        // `customers`
+        // `ID`, `password`, `first_name`, `last_name`, `Email`, `Contact_number`
+
         try {
             //Loads an instance
-            Class.forName(DRIVER).newInstance();
+            //Class.forName(DRIVER).newInstance();
             our_Connection = DriverManager.getConnection(server_address, usernameString, passwordString);
 
             if (our_Connection != null) {
@@ -53,7 +53,7 @@ public class db_man {
                 while (our_resultSet.next()) { // while there are more records
                     Customer customer_tmp = new Customer();
 
-                    customer_tmp.setCusId(our_resultSet.getString("ID"));
+                    customer_tmp.setCusId(our_resultSet.getString(1));
                     costomerList.add(customer_tmp);
                 }
                 
