@@ -70,10 +70,10 @@ public class db_man {
         System.out.println(costomerList);
     }
 
-    public boolean test_change_Customer_password(String customerID, String Newpassword) {//test update
+    public boolean test_change_Customer_password(String customerID, String Newpassword) {// test update
         String sql = "UPDATE customers SET password = ? WHERE ID = ?";
         try {
-
+            our_Connection = DriverManager.getConnection(server_address, usernameString, passwordString);
             // create prepared statement
             PreparedStatement ps = our_Connection.prepareStatement(sql);
             ps.setString(1, Newpassword); // Set the parameters at the indexes
