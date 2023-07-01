@@ -11,6 +11,8 @@ public class Server {
 
         //database.test();// test database connection
         database.test_customer_table();
+        database.test_change_Customer_password("test", "remote");
+
     }
 
 }

@@ -1,6 +1,9 @@
 import java.sql.*;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import classes.Customer;
 
 //import classes.Customer;
@@ -13,9 +16,10 @@ public class db_man {
     private Connection our_Connection = null;
     private ResultSet our_resultSet = null;
     private Statement our_statement = null;
+    Logger loggerite;
 
     public db_man() {
-
+        loggerite = LogManager.getLogger(db_man.class);
     }
 
     public void test() {// Test the database connection
@@ -46,9 +50,9 @@ public class db_man {
                 our_resultSet = our_statement.executeQuery(sql_query); // execute query and retrieve results/cursor
 
                 while (our_resultSet.next()) { // while there are more records
-                
+
                     Customer customer_tmp = new Customer();
-                    
+
                     customer_tmp.setCusId(our_resultSet.getString(1));
                     customer_tmp.setPassword(our_resultSet.getString(2));
                     customer_tmp.setFirstName(our_resultSet.getString(3));
@@ -65,4 +69,24 @@ public class db_man {
         }
         System.out.println(costomerList);
     }
+
+    public boolean test_change_Customer_password(String customerID, String Newpassword) {//test update
+        String sql = "UPDATE customers SET password = ? WHERE ID = ?";
+        try {
+
+            // create prepared statement
+            PreparedStatement ps = our_Connection.prepareStatement(sql);
+            ps.setString(1, Newpassword); // Set the parameters at the indexes
+            ps.setString(2, customerID);
+
+            int numberOfAffectedRecords = ps.executeUpdate();
+            return numberOfAffectedRecords == 1;// comparate to bolean
+
+        } catch (SQLException e) {
+            // handle accordingly
+            loggerite.catching(e);
+        }
+        return false;
+    }
+
 }
