@@ -12,13 +12,14 @@ public class tester extends JFrame implements ActionListener {
 
     public tester(){
         //create  test view
-        //testview.setSize(1300, 700);
+        testview = new JFrame("testview", null);
+        testview.setSize(1300, 700);
 
         //testview.setVisible(true);
-        //testview.setLayout(null);
-        //testview.setLocationRelativeTo(null);
-        //testview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //testview.setSize(1280, 750);
+        testview.setLayout(null);
+        testview.setLocationRelativeTo(null);
+        testview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        testview.setSize(1280, 750);
 
         JLabel placeholder = new JLabel("test change");
         placeholder.setBounds(90, 15, 100, 30);

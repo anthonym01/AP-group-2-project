@@ -51,8 +51,9 @@ public class App extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loggner.info("Test change action");
-                tester test_chage_placeholder = new tester();
-                Appview = test_chage_placeholder.getviewFrame();
+                Appview.dispose();
+                Appview=new tester().getviewFrame();
+                Appview.setVisible(true);
             }
         });
     }
