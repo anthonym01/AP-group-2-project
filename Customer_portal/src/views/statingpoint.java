@@ -9,20 +9,15 @@ import org.apache.logging.log4j.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class statingpoint extends JFrame implements ActionListener {
+public class statingpoint extends view_template {
     Logger loggner;// Log4j2
-    JFrame MainView;// Mainview
     JButton change_to_test_btn;
 
     public statingpoint() {
         loggner = LogManager.getLogger(statingpoint.class);
         loggner.info("Startup point");
 
-        Create_startup_screen();
-    }
-
-    public void Create_startup_screen() {// The true starting point
-        // Create App view Frame
+        // Create starting point view Frame
         MainView = new JFrame("Flow Customer", null);
         MainView.setSize(1300, 700);
 
@@ -63,27 +58,4 @@ public class statingpoint extends JFrame implements ActionListener {
 
     }
 
-    public Component[] getviewFrameComponents() {
-        return MainView.getContentPane().getComponents();
-    }
-
-    public JFrame getMainView() {
-        return MainView;
-    }
-
-    public void setMainView(JFrame MainView) {
-        this.MainView = MainView;// Needed to repaint content later
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
-        if (arg0.getSource() == MainView) {
-            // Window event
-            loggner.info("User closed main wundow");
-        } else if (arg0.getSource() == change_to_test_btn) {
-
-            // tester test_chage_placeholder = new tester();
-        }
-    }
 }

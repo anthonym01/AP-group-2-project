@@ -3,16 +3,14 @@ package views;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class tester extends JFrame implements ActionListener {
-    JFrame MainView;
+public class tester extends view_template {
+
     Logger loggner;// Log4j2
     JButton change_to_startuppoint_btn;
 
@@ -45,31 +43,13 @@ public class tester extends JFrame implements ActionListener {
         MainView.getContentPane().removeAll();
         MainView.repaint();
 
-        statingpoint placeholStatingpoint = new statingpoint();
-        Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
+        statingpoint placeholderStatingpoint = new statingpoint();
+        Component[] startupview_components = placeholderStatingpoint.getviewFrameComponents();
         for (Component component : startupview_components) {
             MainView.add(component);
         }
-        placeholStatingpoint.setMainView(MainView);// Needed for app actions later treat as a 'frame' of reference
-        placeholStatingpoint.dispose();// dispose of the hidden frame used to draw components
-    }
-
-    public Component[] getviewFrameComponents() {
-        return MainView.getContentPane().getComponents();
-    }
-
-    public JFrame getMainView() {
-        return MainView;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-    }
-
-    public void setMainView(JFrame MainView) {
-        this.MainView = MainView;// Needed to repaint content later
+        placeholderStatingpoint.setMainView(MainView);// Needed for app actions later treat as a 'frame' of reference
+        placeholderStatingpoint.dispose();// dispose of the hidden frame used to draw components
     }
 
 }
