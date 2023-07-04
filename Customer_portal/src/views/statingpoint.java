@@ -55,7 +55,7 @@ public class statingpoint extends JFrame implements ActionListener {
                 Appview.repaint();
 
                 tester testview = new tester();
-                Component[] testview_components = testview.getviewFrame();
+                Component[] testview_components = testview.getviewFrameComponents();
                 for (Component component : testview_components) {
                     Appview.add(component);
                 }
@@ -64,7 +64,7 @@ public class statingpoint extends JFrame implements ActionListener {
         });
     }
 
-    public Component[] getviewFrame() {
+    public Component[] getviewFrameComponents() {
         return Appview.getContentPane().getComponents();
     }
 

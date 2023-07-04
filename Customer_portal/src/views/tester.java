@@ -42,7 +42,7 @@ public class tester extends JFrame implements ActionListener {
 
                 
                 statingpoint placeholStatingpoint = new statingpoint();
-                Component[] startupview_components = placeholStatingpoint.getviewFrame();
+                Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
                 for (Component component : startupview_components) {
                     testview.add(component);
                 }
@@ -53,7 +53,7 @@ public class tester extends JFrame implements ActionListener {
         });
     }
 
-    public Component[] getviewFrame() {
+    public Component[] getviewFrameComponents() {
         return testview.getContentPane().getComponents();
     }
     public JFrame getAppview(){
