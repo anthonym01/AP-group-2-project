@@ -6,10 +6,10 @@ public class App {
 
     public static void main(String[] args) {
         // App kickoff point
-        JFrame Appview = new statingpoint().getAppview();
-        Appview.setSize(1280, 750);
-        Appview.setVisible(true);
-        Appview.repaint();
+        JFrame MainView = new statingpoint().getMainView();
+        MainView.setSize(1280, 750);
+        MainView.setVisible(true);
+        MainView.repaint();
     }
 
     public App() {

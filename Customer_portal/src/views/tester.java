@@ -12,7 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class tester extends JFrame implements ActionListener {
-    JFrame testview;
+    JFrame MainView;
     Logger loggner;// Log4j2
     JButton change_to_startuppoint_btn;
 
@@ -20,15 +20,15 @@ public class tester extends JFrame implements ActionListener {
         loggner = LogManager.getLogger(statingpoint.class);
 
         // create test view
-        testview = new JFrame("testview", null);
+        MainView = new JFrame("MainView", null);
 
         JLabel placeholder = new JLabel("test change");
         placeholder.setBounds(90, 15, 100, 30);
-        testview.add(placeholder);
+        MainView.add(placeholder);
 
         change_to_startuppoint_btn = new JButton("Go to START view");
         change_to_startuppoint_btn.setBounds(80, 100, 100, 30);
-        testview.add(change_to_startuppoint_btn);
+        MainView.add(change_to_startuppoint_btn);
 
         change_to_startuppoint_btn.addActionListener(new ActionListener() {// make button actionable
             @Override
@@ -42,24 +42,24 @@ public class tester extends JFrame implements ActionListener {
         loggner.info("Test change to startup action");
 
         // Repint test view with startup
-        testview.getContentPane().removeAll();
-        testview.repaint();
+        MainView.getContentPane().removeAll();
+        MainView.repaint();
 
         statingpoint placeholStatingpoint = new statingpoint();
         Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
         for (Component component : startupview_components) {
-            testview.add(component);
+            MainView.add(component);
         }
-        placeholStatingpoint.setAppview(testview);// Needed for app actions later treat as a 'frame' of reference
+        placeholStatingpoint.setMainView(MainView);// Needed for app actions later treat as a 'frame' of reference
         placeholStatingpoint.dispose();// dispose of the hidden frame used to draw components
     }
 
     public Component[] getviewFrameComponents() {
-        return testview.getContentPane().getComponents();
+        return MainView.getContentPane().getComponents();
     }
 
-    public JFrame getAppview() {
-        return testview;
+    public JFrame getMainView() {
+        return MainView;
     }
 
     @Override
@@ -68,8 +68,8 @@ public class tester extends JFrame implements ActionListener {
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 
-    public void setAppview(JFrame appview) {
-        this.testview = appview;// Needed to repaint content later
+    public void setMainView(JFrame MainView) {
+        this.MainView = MainView;// Needed to repaint content later
     }
 
 }
