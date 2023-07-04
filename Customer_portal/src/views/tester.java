@@ -33,32 +33,34 @@ public class tester extends JFrame implements ActionListener {
         change_to_startuppoint_btn.addActionListener(new ActionListener() {// make button actionable
             @Override
             public void actionPerformed(ActionEvent e) {
-                loggner.info("Test change to startup action");
-
-                // Repint test view with startup
-                //testview = 
-                testview.getContentPane().removeAll();
-                testview.repaint();
-
-                
-                statingpoint placeholStatingpoint = new statingpoint();
-                Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
-                for (Component component : startupview_components) {
-                    testview.add(component);
-                }
-
-                placeholStatingpoint.setAppview(testview);//Needed for app actions later treat as a 'frame' of reference
-                
+                goTostartupView();
             }
         });
+    }
+
+    public void goTostartupView() {
+        loggner.info("Test change to startup action");
+
+        // Repint test view with startup
+        testview.getContentPane().removeAll();
+        testview.repaint();
+
+        statingpoint placeholStatingpoint = new statingpoint();
+        Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
+        for (Component component : startupview_components) {
+            testview.add(component);
+        }
+        placeholStatingpoint.setAppview(testview);// Needed for app actions later treat as a 'frame' of reference
+        placeholStatingpoint.dispose();// dispose of the hidden frame used to draw components
     }
 
     public Component[] getviewFrameComponents() {
         return testview.getContentPane().getComponents();
     }
-    public JFrame getAppview(){
+
+    public JFrame getAppview() {
         return testview;
-    } 
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -67,7 +69,7 @@ public class tester extends JFrame implements ActionListener {
     }
 
     public void setAppview(JFrame appview) {
-        this.testview = appview;//Needed to repaint content later
+        this.testview = appview;// Needed to repaint content later
     }
 
 }
