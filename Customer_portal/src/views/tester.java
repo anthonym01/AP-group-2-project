@@ -7,12 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class tester extends view_template {
-
-    Logger loggner;// Log4j2
-    JButton change_to_startuppoint_btn;
 
     public tester() {
         loggner = LogManager.getLogger(statingpoint.class);
@@ -24,7 +20,7 @@ public class tester extends view_template {
         placeholder.setBounds(90, 15, 100, 30);
         MainView.add(placeholder);
 
-        change_to_startuppoint_btn = new JButton("Go to START view");
+        JButton change_to_startuppoint_btn = new JButton("Go to START view");
         change_to_startuppoint_btn.setBounds(80, 100, 100, 30);
         MainView.add(change_to_startuppoint_btn);
 

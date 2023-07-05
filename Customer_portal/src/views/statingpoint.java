@@ -5,13 +5,10 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class statingpoint extends view_template {
-    Logger loggner;// Log4j2
-    JButton change_to_test_btn;
 
     public statingpoint() {
         loggner = LogManager.getLogger(statingpoint.class);
@@ -29,7 +26,7 @@ public class statingpoint extends view_template {
         placeholder.setBounds(15, 15, 100, 30);
         MainView.add(placeholder);
 
-        change_to_test_btn = new JButton("Go to test view");
+        JButton change_to_test_btn = new JButton("Go to test view");
         change_to_test_btn.setBounds(15, 100, 100, 30);
         MainView.add(change_to_test_btn);
 
