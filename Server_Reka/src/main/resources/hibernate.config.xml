@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database Connection Setting -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/flowappdb</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+
+        <!-- JDBC Connection Pool Setting -->
+        <property name="connection.pool_size">10</property>
+
+        <!-- Choose The Hibernate Dialect For The Specific Database Type -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
+
+        <!-- Echo Out The SQL To The Console -->
+        <property name="hibernate.show_sql">true</property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- The hbm2ddl.auto property is defined for creating automatic table in the database.  -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- To help fetch lazy for the one-to-many, one-to-one, many-to-one, many-to-many relationships...  -->
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+
+        <!-- List of Annotated mapping classes -->
+        <mapping class="com.flowapp.model.User" />
+        <mapping class="com.flowapp.model.Employee" />
+        <mapping class="com.flowapp.model.Customer" />
+        <mapping class="com.flowapp.model.Message" />
+        <mapping class="com.flowapp.model.Response" />
+        <mapping class="com.flowapp.model.TemporaryChat" />
+
+    </session-factory>
+</hibernate-configuration>

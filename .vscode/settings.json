@@ -1,8 +1,7 @@
 {
     "java.project.outputPath": "Issue_tracker/bin",
     "java.project.sourcePaths": [
-        "Issue_tracker/src/properties",
-        "Issue_tracker/src"
+        "Customer_portal/src"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
