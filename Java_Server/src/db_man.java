@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import model.Customer;
+import models.Customer;
 
 //import classes.Customer;
 

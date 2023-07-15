@@ -1,4 +1,4 @@
-package model;
+package models;
 
 public class Customer {
 	
@@ -10,17 +10,10 @@ public class Customer {
 	private String telNum;
 	
 	
-	 // Default Constructor
     public Customer() {
-        cusId = "";
-        password = "";
-        firstName = "";
-        lastName = "";
-        email = "";
-        telNum = "";
-     }
+
+    }
     
- // Primary Constructor
     public Customer(String cusId, String password, String firstName, String lastName, String email, String telNum) {
         this.cusId = cusId;
         this.password = password;
