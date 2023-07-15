@@ -1,48 +1,80 @@
 package models;
 
-public class Customer {
-	
-	private String cusId;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String telNum;
-	
-	
-    public Customer() {
+import java.util.ArrayList;
+import java.util.List;
 
-    }
-    
-    public Customer(String cusId, String password, String firstName, String lastName, String email, String telNum) {
-        this.cusId = cusId;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.telNum = telNum;
-    }
-    
- // Copy Constructor
-    public Customer(Customer customer) {
-    	cusId = customer.cusId;
-    	password = customer.password;
-        firstName = customer.firstName;
-        lastName = customer.lastName;
-        email = customer.email;
-        telNum = customer.telNum;
-        
-    }
-    
-    
-// Getters and Setters
-    
-	public String getCusId() {
-		return cusId;
+import javax.persistence.*;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import factory.SessionFactoryBuilder;
+
+@Entity
+@Table(name = "customers")
+public class Customer {
+
+	@Id
+	@Column(name = "ID")
+	private String Id;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "Email")
+	private String email;
+
+	@Column(name = "Contact_number")
+	private String telNum;
+
+	public Customer() {
+
 	}
 
-	public void setCusId(String cusId) {
-		this.cusId = cusId;
+	public Customer(String Id, String password, String firstName, String lastName, String email, String telNum) {
+		super();
+		this.Id = Id;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.telNum = telNum;
+	}
+
+	// Copy Constructor
+	public Customer(Customer customer) {
+		Id = customer.Id;
+		password = customer.password;
+		firstName = customer.firstName;
+		lastName = customer.lastName;
+		email = customer.email;
+		telNum = customer.telNum;
+
+	}
+
+	public void create(Customer payload) {
+		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
+
+		Transaction transaction = session.beginTransaction();
+		session.save(payload);
+		transaction.commit();
+		session.close();
+	}
+
+	// Getters and Setters
+
+	public String getId() {
+		return Id;
+	}
+
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public String getPassword() {
@@ -52,7 +84,7 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -85,12 +117,9 @@ public class Customer {
 		this.telNum = telNum;
 	}
 
-@Override
+	@Override
 	public String toString() {
-		return "Customer [cusId=" + cusId + ", password=" + password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", telNum=" + telNum + "]";
+		return "Customer [Id=" + Id + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", telNum=" + telNum + "]";
 	}
-    
- 
-	
 }

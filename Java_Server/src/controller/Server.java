@@ -21,10 +21,10 @@ import models.Customer;
  * @author Oniel
  */
 public class Server {
-	private ObjectOutputStream os;
-	private ObjectInputStream is;
+	private ObjectOutputStream OutputStream;
+	private ObjectInputStream InputStream;
 	private Socket connection;
-	private ServerSocket servSock;
+	private ServerSocket Socket;
 	private static final Logger logger = LogManager.getLogger(Server.class);
 
 	public Server() {
@@ -35,7 +35,7 @@ public class Server {
 	private void createConnection() {
 		try {
 			logger.warn("Attempting to setup Server Socket, Errors may occur");
-			servSock = new ServerSocket(8888, 1);
+			Socket = new ServerSocket(8888, 1);
 			logger.info("Server Socket Successfully Configured");
 		} catch (IOException ex) {
 			logger.error(ex.getMessage());
@@ -45,8 +45,8 @@ public class Server {
 	public void getStream() {
 		try {
 			logger.warn("Attempting to setup Server Streams to client, Errors may occur");
-			os = new ObjectOutputStream(connection.getOutputStream());
-			is = new ObjectInputStream(connection.getInputStream());
+			OutputStream = new ObjectOutputStream(connection.getOutputStream());
+			InputStream = new ObjectInputStream(connection.getInputStream());
 			logger.info("Server Streams Successfully Configured to Client");
 		} catch (IOException ex) {
 			logger.error(ex.getMessage());
@@ -58,24 +58,30 @@ public class Server {
 		try {
 			while (true) {
 				logger.info("Server waiting for connections");
-				connection = servSock.accept();
+				connection = Socket.accept();
 				logger.info("C1ient requests accepted");
 				this.getStream();
 				do {
 					try {
 						logger.warn("Attempting to receive data from client, Errors may occur");
-						action = (String) is.readObject();
+						action = (String) InputStream.readObject();
 						logger.info("Data Successfully received from client");
 						switch (action) {
+							case "Test":
+								logger.info("Client test connection");
+								String payload = (String) InputStream.readObject();
+								logger.info("Received: "+payload);
+								OutputStream.writeObject(true);
+							break;
 							case "Add Customer"://switch to model.example
 								logger.warn("Attempting to receive data from client, Errors may occur");
-								Customer obj = (Customer) is.readObject();
-								logger.info("Data Successfully received from client :" + obj.getCusId());
+								Customer obj = (Customer) InputStream.readObject();
+								logger.info("Data Successfully received from client :" + obj.getId());
 								// add customer
 								// CustomerHibernate ch = new CustomerHibernate();
 								// ch.insertCustomer(obj);
 								logger.warn("Attempting to send data to client, Errors may occur");
-								os.writeObject(true);
+								OutputStream.writeObject(true);
 								logger.info("Data Successfully sent from client");
 								break;
 							case "Add Complaint":
@@ -85,7 +91,7 @@ public class Server {
 					} catch (Exception ex) {
 						logger.error(ex.getMessage());
 						try {
-							os.writeObject(false);
+							OutputStream.writeObject(false);
 						} catch (IOException ioex) {
 							logger.error(ioex.getMessage());
 							break;
@@ -101,14 +107,12 @@ public class Server {
 
 	public void closeConnection() {
 		try {
-			logger.warn("Attempting to close Server Streams to client, Errors may occur");
-			os.close();
-			is.close();
+			logger.info("Close Server");
+			OutputStream.close();
+			InputStream.close();
 			connection.close();
-			logger.info("$erver Streams Successfully Closed to Client");
 		} catch (IOException ex) {
 			logger.error(ex.getMessage());
 		}
 	}
-
 }
