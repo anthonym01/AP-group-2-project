@@ -68,12 +68,11 @@ public class Customer implements Serializable{
 		session.close();
 	}
 	
-	public void update() {
+	public void update(Customer payload) {
 		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		Customer s = (Customer) session.get(Customer.class, this.Id);
-		s.setFirstName(this.firstName);
-		s.setLastName(this.lastName);
+		Customer s = (Customer) session.get(Customer.class, payload.Id);
+		s.email = payload.email;
 		session.update(s);
 		transaction.commit();
 		session.close();

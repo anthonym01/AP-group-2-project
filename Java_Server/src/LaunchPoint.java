@@ -9,7 +9,7 @@ public class LaunchPoint {
     }
 
     public static void test(){
-        Customer testload = new Customer("1999", "test","testcusto", "mer", "test@test.com", "87855884");
-        testload.delete("1999");
+        Customer testload = new Customer("1584", "test","tes update", "1", "test@update.com", "87855884");
+        testload.update(testload);
     }
 }
