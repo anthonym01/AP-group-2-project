@@ -67,7 +67,40 @@ public class Customer implements Serializable{
 		transaction.commit();
 		session.close();
 	}
+	
+	public void update() {
+		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		Customer s = (Customer) session.get(Customer.class, this.Id);
+		s.setFirstName(this.firstName);
+		s.setLastName(this.lastName);
+		session.update(s);
+		transaction.commit();
+		session.close();
 
+	}
+
+	public List<Customer> readAll() {//Return a list of customers from the Database
+		List<Customer> CustomerList = new ArrayList<>();
+		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+
+		CustomerList = (List<Customer>) session.createQuery("FROM Customer").getResultList();
+		transaction.commit();
+		session.close();
+		System.out.println(CustomerList);
+		return CustomerList;
+	}
+
+	public void delete(String ID) {//Remove Via ID
+		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+
+		Customer s = (Customer) session.get(Customer.class, ID);
+		session.delete(s);
+		transaction.commit();
+		session.close();
+	}
 	
 
 	// Getters and Setters

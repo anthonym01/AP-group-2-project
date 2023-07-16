@@ -3,13 +3,13 @@ import models.Customer;
 
 public class LaunchPoint {
     public static void main(String[] args) {
-        //test();
+        test();
 
         new Server();
     }
 
     public static void test(){
         Customer testload = new Customer("1999", "test","testcusto", "mer", "test@test.com", "87855884");
-        testload.create(testload);
+        testload.delete("1999");
     }
 }
