@@ -3,6 +3,7 @@ import views.statingpoint;
 import javax.swing.JFrame;
 
 import ComsStation.AppClient;
+import models.Customer;
 
 public class App {
     JFrame MainView;
@@ -19,8 +20,13 @@ public class App {
          * client.receiveResponse();
          * client.closeConnection();
          */
-        AppClient client = new AppClient();
-        client.test("Testing 123");
+        /*
+         * AppClient client = new AppClient();
+         * Boolean sucess = client.createCustomer(new
+         * Customer("158944","0000","fdfsf","gfggfg","sdfds@1.1","834845934"));
+         * System.out.println("Sucess state? "+sucess);
+         */
+
     }
 
     public App() {

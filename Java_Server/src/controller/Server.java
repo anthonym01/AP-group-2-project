@@ -63,29 +63,27 @@ public class Server {
 				this.getStream();
 				do {
 					try {
-						logger.warn("Attempting to receive data from client, Errors may occur");
 						action = (String) InputStream.readObject();
 						logger.info("Data Successfully received from client");
 						switch (action) {
 							case "Test":
 								logger.info("Client test connection");
 								String payload = (String) InputStream.readObject();
-								logger.info("Received: "+payload);
-								OutputStream.writeObject(true);
-							break;
-							case "Add Customer"://switch to model.example
-								logger.warn("Attempting to receive data from client, Errors may occur");
-								Customer obj = (Customer) InputStream.readObject();
-								logger.info("Data Successfully received from client :" + obj.getId());
-								// add customer
-								// CustomerHibernate ch = new CustomerHibernate();
-								// ch.insertCustomer(obj);
-								logger.warn("Attempting to send data to client, Errors may occur");
-								OutputStream.writeObject(true);
-								logger.info("Data Successfully sent from client");
+								logger.info("Received: " + payload);
 								break;
-							case "Add Complaint":
-								// add code here
+							case "create Customer":// switch to model.example
+								logger.warn("Attempting to receive data from client, Errors may occur");
+								try {
+
+									Customer tempCustomer = (Customer) InputStream.readObject();
+									logger.info("Create customer with ID :" + tempCustomer.getId());
+									tempCustomer.create(tempCustomer);
+									OutputStream.writeObject(true);
+								} catch (Exception e) {
+									// TODO: handle exception
+									OutputStream.writeObject(false);
+								}
+
 								break;
 						}
 					} catch (Exception ex) {

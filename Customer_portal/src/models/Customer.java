@@ -6,10 +6,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import factory.SessionFactoryBuilder;
 
 @Entity
 @Table(name = "customers")
@@ -60,15 +56,8 @@ public class Customer implements Serializable{
 	}
 
 	public void create(Customer payload) {
-		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 
-		Transaction transaction = session.beginTransaction();
-		session.save(payload);
-		transaction.commit();
-		session.close();
 	}
-
-	
 
 	// Getters and Setters
 

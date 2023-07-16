@@ -23,12 +23,12 @@ public class AppClient {
 		this.getStreams();
 	}
 
+	//a test connection
 	public void test(String postload) {
 		try {
 
-			this.sendAction("Test");
+			this.sendRequest("Test");
 			os.writeObject(postload);
-			this.receiveconfirmationResponse();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 
@@ -68,35 +68,30 @@ public class AppClient {
 		}
 	}
 
-	public void sendAction(String action) {
+	public void sendRequest(String action) {
 		try {
-			logger.warn("Attempting to send information to Server, Errors may occur");
 			os.writeObject(action);
-			logger.info("CIient Streams Successfully Closed to Server");
 		} catch (IOException ex) {
-			logger.error("Data Hot Sent to Server\n" + ex.getMessage());
-		}
-	}
-
-	public void sendCustomer(Customer obj) {
-		try {
-			logger.warn("Attempting to send information to Server, Errors may occur");
-			os.writeObject(obj);
-			logger.info("Data Successfully Sent to Server");
-		} catch (IOException ex) {
-			logger.error("Data Not Sent to Server\n" + ex.getMessage());
-		}
-	}
-
-	public void receiveconfirmationResponse() {
-		try {
-			logger.warn("Attempting to receive information from Server, Errors may occur");
-			Boolean flag = (Boolean) is.readObject();
-			logger.info("Data Successfully Received from Server");
-			logger.info("Received: '" + flag + "' from Server");
-		} catch (ClassCastException | ClassNotFoundException | IOException ex) {
 			logger.error(ex.getMessage());
 		}
 	}
+
+
+	
+	public boolean createCustomer(Customer payload) {
+		try {
+			logger.info("request create customer: " + payload);
+			os.writeObject("create Customer");
+			os.writeObject(payload);
+			Boolean sucess = (Boolean) is.readObject();
+			closeConnection();
+			return sucess;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return false;
+		}
+	}
+
+	
 
 }

@@ -1,3 +1,4 @@
+package factory;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import models.Customer;
 //import classes.Customer;
 
 public class db_man {
-    private final String server_address = "jdbc:mysql://34.66.158.127:3306/apProject";
+/*    private final String server_address = "jdbc:mysql://34.66.158.127:3306/apProject";
     private final String usernameString = "apProject";
     private final String passwordString = "appain";
     private final String DRIVER = "com.mysql.jdbc.Driver";
@@ -88,5 +89,5 @@ public class db_man {
         }
         return false;
     }
-
+*/
 }
