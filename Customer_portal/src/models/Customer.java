@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 
 	@Id
 	@Column(name = "ID")
@@ -55,6 +54,7 @@ public class Customer implements Serializable{
 
 	}
 
+	//hybernate parity for deserialization
 	public void create(Customer payload) {
 
 	}
