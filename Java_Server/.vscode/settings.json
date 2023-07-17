@@ -53,5 +53,8 @@
         "/run/media/samuel/SDcard/Code_bin/AP-group-2-project/Libraries/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar",
         "/run/media/samuel/SDcard/Code_bin/AP-group-2-project/Libraries/apache-log4j-2.13.3-bin/log4j-api-2.13.3.jar",
         "/run/media/samuel/SDcard/Code_bin/AP-group-2-project/Libraries/apache-log4j-2.13.3-bin/log4j-core-2.13.3.jar"
+    ],
+    "cSpell.words": [
+        "fireable"
     ]
 }

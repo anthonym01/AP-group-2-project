@@ -13,7 +13,7 @@ import factory.SessionFactoryBuilder;
 
 @Entity
 @Table(name = "customers")
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 
 	@Id
 	@Column(name = "ID")
@@ -67,19 +67,24 @@ public class Customer implements Serializable{
 		transaction.commit();
 		session.close();
 	}
-	
+
 	public void update(Customer payload) {
 		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
-		Customer s = (Customer) session.get(Customer.class, payload.Id);
-		s.email = payload.email;
-		session.update(s);
+		Customer transactinator = (Customer) session.get(Customer.class, payload.Id);
+		
+		transactinator.email = payload.email;
+		transactinator.password = payload.password;
+		transactinator.firstName = payload.firstName;
+		transactinator.lastName = payload.lastName;
+		transactinator.telNum = payload.telNum;
+
+		session.update(transactinator);
 		transaction.commit();
 		session.close();
-
 	}
 
-	public List<Customer> readAll() {//Return a list of customers from the Database
+	public List<Customer> readAll() {// Return a list of customers from the Database
 		List<Customer> CustomerList = new ArrayList<>();
 		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
@@ -91,7 +96,7 @@ public class Customer implements Serializable{
 		return CustomerList;
 	}
 
-	public void delete(String ID) {//Remove Via ID
+	public void delete(String ID) {// Remove Via ID
 		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 
@@ -100,7 +105,6 @@ public class Customer implements Serializable{
 		transaction.commit();
 		session.close();
 	}
-	
 
 	// Getters and Setters
 
