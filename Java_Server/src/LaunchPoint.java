@@ -13,8 +13,8 @@ public class LaunchPoint {
 
         //Customer testload = new Customer("3", "test", "tmake", "1", "test@make.com", "87855884");
         //testload.create(testload);
-        Employee testemp = new Employee(12, 1, "test", "tester", "foop", "Awoooo","32524354");
-        testemp.create(testemp);
+        //Employee testemp = new Employee(12, 1, "test", "tester", "foop", "Awoooo","32524354");
+        //testemp.create(testemp);
         
         // testemp.readAll();
     }
