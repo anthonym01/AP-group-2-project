@@ -1,3 +1,6 @@
+# for intelli
+.idea
+
 # for vs code users
 *.classpath
 *.project
