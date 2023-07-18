@@ -10,13 +10,7 @@ public class App {
 
     public static void main(String[] args) {
         new App();
-
-        // test servcer connection
-
-        AppClient client = new AppClient();
-        Boolean sucess = client
-                .createCustomer(new Customer("1558634", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
-        System.out.println("Sucess state? " + sucess);
+        // test();
 
     }
 
@@ -26,6 +20,15 @@ public class App {
         MainView.setSize(1280, 750);
         MainView.setVisible(true);
         MainView.repaint();
+    }
+
+    public static void test() {
+        // test servcer connection
+
+        AppClient client = new AppClient();
+        Boolean sucess = client
+                .createCustomer(new Customer("openhimer", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
+        System.out.println("Sucess state? " + sucess);
     }
 
 }
