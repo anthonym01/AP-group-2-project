@@ -4,9 +4,9 @@ import models.Employee;
 
 public class LaunchPoint {
     public static void main(String[] args) {
-        test();
+        //test();
 
-        //new Server();
+        new Server();
     }
 
     public static void test() {

@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
@@ -54,8 +57,21 @@ public class Customer implements Serializable {
 
 	}
 
-	//hybernate parity for deserialization
 	public void create(Customer payload) {
+
+	}
+
+	public void update(Customer payload) {
+
+	}
+
+	public List<Customer> readAll() {// Return a list of customers from the Database
+		List<Customer> CustomerList = new ArrayList<>();
+
+		return CustomerList;
+	}
+
+	public void delete(String ID) {// Remove Via ID
 
 	}
 

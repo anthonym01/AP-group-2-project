@@ -13,19 +13,10 @@ public class App {
 
         // test servcer connection
 
-        /*
-         * MyClient client =new MyClient();
-         * client.sendAction("Add Customer");
-         * client.sendCustomer(new Customer(1,"Oniel Charles"));
-         * client.receiveResponse();
-         * client.closeConnection();
-         */
-        /*
-         * AppClient client = new AppClient();
-         * Boolean sucess = client.createCustomer(new
-         * Customer("158944","0000","fdfsf","gfggfg","sdfds@1.1","834845934"));
-         * System.out.println("Sucess state? "+sucess);
-         */
+        AppClient client = new AppClient();
+        Boolean sucess = client
+                .createCustomer(new Customer("1558634", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
+        System.out.println("Sucess state? " + sucess);
 
     }
 
