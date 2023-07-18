@@ -113,7 +113,7 @@ public class Employee implements Serializable {
 		return EmployeeList;
 	}
 
-	public void delete(String ID) {// Remove Via ID
+	public void delete(int ID) {// Remove Via ID
 		Session session = SessionFactoryBuilder.getSessionFactory().getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 

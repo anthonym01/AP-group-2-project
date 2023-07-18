@@ -17,6 +17,11 @@
     <property name="hbm2ddl.auto">update</property>
     <!-- mapping class="com.mcnz.jpa.examples.Player" / -->
     <mapping class="models.Customer" />
+    <mapping class="models.complaint_reply" />
+    <mapping class="models.complaint" />
+    <mapping class="models.queries" />
+    <mapping class="models.request" />
     <mapping class="models.Employee" />
+    <mapping class="models.complaint" />
   </session-factory>
 </hibernate-configuration>

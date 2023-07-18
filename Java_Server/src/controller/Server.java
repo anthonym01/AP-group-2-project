@@ -71,17 +71,17 @@ public class Server {
 								String payload = (String) InputStream.readObject();
 								logger.info("Received: " + payload);
 								break;
-							case "create Customer":// switch to model.example
-								logger.warn("Attempting to receive data from client, Errors may occur");
+							case "create Customer":// //Request customer creation action
 								try {
 
-									Customer tempCustomer = (Customer) InputStream.readObject();
+									Customer tempCustomer = (Customer) InputStream.readObject();// data beamed from client
 									logger.info("Create customer with ID :" + tempCustomer.getId());
 									tempCustomer.create(tempCustomer);
-									OutputStream.writeObject(true);
+									OutputStream.writeObject(true);//send reply to client
 								} catch (Exception e) {
 									// TODO: handle exception
-									OutputStream.writeObject(false);
+									logger.warn(e.getMessage());
+									OutputStream.writeObject(false);//send reply to client AFTER FAILIURE
 								}
 
 								break;
