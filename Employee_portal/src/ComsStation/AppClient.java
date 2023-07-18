@@ -23,7 +23,7 @@ public class AppClient {
 		this.getStreams();
 	}
 
-	//a test connection
+	// a test connection
 	public void test(String postload) {
 		try {
 
@@ -76,14 +76,12 @@ public class AppClient {
 		}
 	}
 
-
-	
-	public boolean createCustomer(Customer payload) {
+	public boolean createCustomer(Customer payload) {// Create a customer Entry
 		try {
 			logger.info("request create customer: " + payload);
-			os.writeObject("create Customer");//Request customer creation action
-			os.writeObject(payload);//beam data to server
-			Boolean sucess = (Boolean) is.readObject();//read reply from server
+			os.writeObject("create_Customer");// Request customer creation action
+			os.writeObject(payload);// beam data to server
+			Boolean sucess = (Boolean) is.readObject();// read reply from server
 			closeConnection();
 			return sucess;
 		} catch (Exception e) {
@@ -92,6 +90,19 @@ public class AppClient {
 		}
 	}
 
-	
+	public Customer get_Customer(String Customer_ID) {
+		try {
+			Customer payoadCustomer;
+			os.writeObject("get_Customer");// Request customer creation action
+			os.writeObject(Customer_ID);// beam data to server
+			Customer sucess = (Customer) is.readObject();// read reply from server
+			closeConnection();
+			payoadCustomer = new Customer(sucess);
+			return payoadCustomer;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return new Customer();
+		}
+	}
 
 }
