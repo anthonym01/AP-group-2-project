@@ -1,90 +1,58 @@
 package views;
 
 import javax.swing.JFrame;
-import views.tester;
 import java.awt.Component;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class statingpoint extends JFrame implements ActionListener {
-    Logger loggner;// Log4j2
-    JFrame Appview;
-
-    JButton change_to_test_btn;
+public class statingpoint extends view_template {
 
     public statingpoint() {
         loggner = LogManager.getLogger(statingpoint.class);
-        loggner.info("Startup");
+        loggner.info("Startup point");
 
-        Create_startup_screen();
-    }
+        // Create starting point view Frame
+        MainView = new JFrame("Flow Customer", null);
+        MainView.setSize(1300, 700);
 
-    public void Create_startup_screen() {// The true starting point
-        // Create App view Frame
-        Appview = new JFrame("Flow Customer", null);
-         Appview.setSize(1300, 700);
-
-        
-        Appview.setLayout(null);
-        Appview.setLocationRelativeTo(null);
-        Appview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MainView.setLayout(null);
+        MainView.setLocationRelativeTo(null);
+        MainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel placeholder = new JLabel("App placeholder");
         placeholder.setBounds(15, 15, 100, 30);
-        Appview.add(placeholder);
+        MainView.add(placeholder);
 
-        change_to_test_btn = new JButton("Go to test view");
+        JButton change_to_test_btn = new JButton("Go to test view");
         change_to_test_btn.setBounds(15, 100, 100, 30);
-        Appview.add(change_to_test_btn);
+        MainView.add(change_to_test_btn);
 
         change_to_test_btn.addActionListener(new ActionListener() {// make button actionable
             @Override
             public void actionPerformed(ActionEvent e) {
-                loggner.info("Test change action");
-
-                // Repint Startup view with test view
-                Appview.getContentPane().removeAll();
-                Appview.repaint();
-
-                tester testview = new tester();
-                Component[] testview_components = testview.getviewFrameComponents();
-                for (Component component : testview_components) {
-                    Appview.add(component);
-                }
-                testview.setAppview(Appview);//Needed for app actions later treat as a 'frame' of reference
+                goTotestView();
             }
         });
     }
 
-    public Component[] getviewFrameComponents() {
-        return Appview.getContentPane().getComponents();
-    }
+    public void goTotestView() {// change reference point to testview
+        loggner.info("Test change action");
 
-    public JFrame getAppview() {
-        return Appview;
-    }
+        // Re-paint Startup view with test view
+        MainView.getContentPane().removeAll();
+        MainView.repaint();
 
-    public void setAppview(JFrame appview) {
-        this.Appview = appview;// Needed to repaint content later
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
-        if (arg0.getSource() == Appview) {
-            // Window event
-            loggner.info("User closed main wundow");
-        } else if (arg0.getSource() == change_to_test_btn) {
-
-            // tester test_chage_placeholder = new tester();
+        tester testview = new tester();
+        Component[] testview_components = testview.getviewFrameComponents();
+        for (Component component : testview_components) {
+            MainView.add(component);
         }
+        testview.setMainView(MainView);// Needed for app actions later treat as a 'frame' of reference
+        testview.dispose();// dispose of the hidden frame used to draw components
+
     }
+
 }

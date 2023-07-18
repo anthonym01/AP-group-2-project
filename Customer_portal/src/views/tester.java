@@ -3,71 +3,49 @@ package views;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-public class tester extends JFrame implements ActionListener {
-    JFrame testview;
-    Logger loggner;// Log4j2
-    JButton change_to_startuppoint_btn;
+public class tester extends view_template {
 
     public tester() {
         loggner = LogManager.getLogger(statingpoint.class);
 
         // create test view
-        testview = new JFrame("testview", null);
+        MainView = new JFrame("MainView", null);
 
         JLabel placeholder = new JLabel("test change");
         placeholder.setBounds(90, 15, 100, 30);
-        testview.add(placeholder);
+        MainView.add(placeholder);
 
-        change_to_startuppoint_btn = new JButton("Go to START view");
+        JButton change_to_startuppoint_btn = new JButton("Go to START view");
         change_to_startuppoint_btn.setBounds(80, 100, 100, 30);
-        testview.add(change_to_startuppoint_btn);
+        MainView.add(change_to_startuppoint_btn);
 
         change_to_startuppoint_btn.addActionListener(new ActionListener() {// make button actionable
             @Override
             public void actionPerformed(ActionEvent e) {
-                loggner.info("Test change to startup action");
-
-                // Repint test view with startup
-                //testview = 
-                testview.getContentPane().removeAll();
-                testview.repaint();
-
-                
-                statingpoint placeholStatingpoint = new statingpoint();
-                Component[] startupview_components = placeholStatingpoint.getviewFrameComponents();
-                for (Component component : startupview_components) {
-                    testview.add(component);
-                }
-
-                placeholStatingpoint.setAppview(testview);//Needed for app actions later treat as a 'frame' of reference
-                
+                goTostartupView();
             }
         });
     }
 
-    public Component[] getviewFrameComponents() {
-        return testview.getContentPane().getComponents();
-    }
-    public JFrame getAppview(){
-        return testview;
-    } 
+    public void goTostartupView() {
+        loggner.info("Test change to startup action");
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-    }
+        // Repint test view with startup
+        MainView.getContentPane().removeAll();
+        MainView.repaint();
 
-    public void setAppview(JFrame appview) {
-        this.testview = appview;//Needed to repaint content later
+        statingpoint placeholderStatingpoint = new statingpoint();
+        Component[] startupview_components = placeholderStatingpoint.getviewFrameComponents();
+        for (Component component : startupview_components) {
+            MainView.add(component);
+        }
+        placeholderStatingpoint.setMainView(MainView);// Needed for app actions later treat as a 'frame' of reference
+        placeholderStatingpoint.dispose();// dispose of the hidden frame used to draw components
     }
 
 }

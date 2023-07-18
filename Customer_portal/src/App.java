@@ -1,31 +1,34 @@
-import org.apache.logging.log4j.Logger;
 
 import views.statingpoint;
-import views.tester;
-import java.awt.Component;
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import org.apache.logging.log4j.LogManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import ComsStation.AppClient;
+import models.Customer;
 
 public class App {
-    Logger loggner;// Log4j2
+    JFrame MainView;
 
     public static void main(String[] args) {
-        JFrame Appview = new statingpoint().getAppview();
-        Appview.setSize(1280, 750);
-        Appview.setVisible(true);
-        Appview.repaint();
+        new App();
+        // test();
+
     }
 
     public App() {
-        loggner = LogManager.getLogger(App.class);
-        loggner.info("Startup");
+        // App kickoff point
+        MainView = new statingpoint().getMainView();
+        MainView.setSize(1280, 750);
+        MainView.setVisible(true);
+        MainView.repaint();
+    }
+
+    public static void test() {
+        // test servcer connection
+
+        AppClient client = new AppClient();
+        Boolean sucess = client
+                .createCustomer(new Customer("openhimer", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
+        System.out.println("Sucess state? " + sucess);
     }
 
 }
