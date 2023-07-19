@@ -199,9 +199,15 @@ public class LoginPanel extends JPanel {
 
     // AUTO LOGIN FOR DEVELOPMENT...
     private void autoLogin(){
-        // 567-95-0669 [Rae Ruecker] nN[1u2phee
+        // Rep: 000-22-9034 - zK]3MfWBg)
+        // Technician: 013-36-4063 - qS)8AH$!@8
 
-        usernameField.populate("225-35-3269");
-        passwordField.populate("rW]9mr[L1b");
+        // Rep
+        usernameField.populate("000-22-9034");
+        passwordField.populate("zK]3MfWBg)");
+
+        // Technician
+        //usernameField.populate("013-36-4063");
+        //passwordField.populate("qS)8AH$!@8");
     }
 }
