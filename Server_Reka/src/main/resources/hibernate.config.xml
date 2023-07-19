@@ -6,9 +6,9 @@
     <session-factory>
         <!-- JDBC Database Connection Setting -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/flowappdb</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password"></property>
+        <property name="connection.url">jdbc:mysql://34.66.158.127:3306/flowappdb</property>
+        <property name="connection.username">flowappdb</property>
+        <property name="connection.password">flowappdb</property>
 
         <!-- JDBC Connection Pool Setting -->
         <property name="connection.pool_size">10</property>
