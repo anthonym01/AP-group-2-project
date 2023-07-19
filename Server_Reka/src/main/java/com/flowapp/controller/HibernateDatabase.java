@@ -134,11 +134,11 @@ public class HibernateDatabase {
     }
 
     @SuppressWarnings("unchecked")
-    public static List<Employee> getAvailableTechnichians() {
+    public static List<Employee> getAvailableTechnicians() {
         Session session = factory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Employee> employeeList = (List<Employee>) session.createQuery("FROM Employee WHERE role='Technichian' AND available_for_chat is TRUE").getResultList();
+        List<Employee> employeeList = (List<Employee>) session.createQuery("FROM Employee WHERE role='Technician' AND available_for_chat is TRUE").getResultList();
         transaction.commit();
 
         session.close();
@@ -147,11 +147,11 @@ public class HibernateDatabase {
     }
 
     @SuppressWarnings("unchecked")
-    public static List<Employee> getTechnichians() {
+    public static List<Employee> getTechnicians() {
         Session session = factory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Employee> employeeList = (List<Employee>) session.createQuery("FROM Employee WHERE role='Advisor'").getResultList();
+        List<Employee> employeeList = (List<Employee>) session.createQuery("FROM Employee WHERE role='Technician'").getResultList();
         transaction.commit();
 
         session.close();
@@ -380,7 +380,7 @@ public class HibernateDatabase {
         Transaction transaction = session.beginTransaction();
 
         // HQL example - Get TemporaryChat by employee_id
-        Query query = session.createQuery("FROM SessionChat WHERE employee_id= :employee_id");
+        Query query = session.createQuery("FROM TemporaryChat WHERE employee_id= :employee_id");
         query.setParameter("employee_id", employee.getIDNumber());
 
         List<TemporaryChat> chatList = (List<TemporaryChat>) query.getResultList();

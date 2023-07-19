@@ -16,8 +16,8 @@ public class MySQLDatabase {
     public void connect() throws SQLException {
         if(connection != null) return;
 
-        String url = "jdbc:mysql://34.66.158.127:3306/flowappdb";
-        connection = DriverManager.getConnection(url, "flowappdb", "flowappdb");
+        String url = "jdbc:mysql://localhost:3306/flowappdb";
+        connection = DriverManager.getConnection(url, "root", "");
 
         Log.info("Connected to database successfully! [MySQL]");
     }

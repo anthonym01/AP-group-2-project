@@ -102,9 +102,9 @@ public class Controller {
     }
 
     // Retrieve a list of all employee [technichians]
-    public List<Employee> getTechnichians() {
+    public List<Employee> getTechnicians() {
         try {
-            return HibernateDatabase.getTechnichians();
+            return HibernateDatabase.getTechnicians();
         } catch (IllegalArgumentException | PersistenceException e) {
             Log.error("Error inside the getTechnichians() -> " + e.getMessage());
         }
@@ -112,9 +112,9 @@ public class Controller {
         return new ArrayList<>();
     }
 
-    public List<Employee> getAvailableTechnichians() {
+    public List<Employee> getAvailableTechnicians() {
         try {
-            return HibernateDatabase.getAvailableTechnichians();
+            return HibernateDatabase.getAvailableTechnicians();
         } catch (IllegalArgumentException | PersistenceException e) {
             Log.error("Error inside the getAvailableTechnichians() -> " + e.getMessage());
         }

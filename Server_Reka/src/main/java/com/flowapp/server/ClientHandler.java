@@ -202,12 +202,12 @@ public class ClientHandler extends Thread {
             Log.info("Chat found! [" + chat + "]");
             os.writeObject(chat);
         }
-        else if(action.equalsIgnoreCase("find chat by technichian")){
+        else if(action.equalsIgnoreCase("find chat by technician")){
             TemporaryChat sc = (TemporaryChat) is.readObject();
 
             chat = controller.findByRepresentative(sc);
 
-            Log.info("Chat found by Technichian! [" + chat + "]");
+            Log.info("Chat found by Technician! [" + chat + "]");
             os.writeObject(chat);
         }
 
@@ -218,17 +218,17 @@ public class ClientHandler extends Thread {
             Log.info("Retrieved staff members [" + staffList.size() + "]");
             os.writeObject(staffList);
         }
-        else if(action.equalsIgnoreCase("get technichians")){
-            List<Employee> technichiansList = controller.getTechnichians();
+        else if(action.equalsIgnoreCase("get technicians")){
+            List<Employee> techniciansList = controller.getTechnicians();
 
-            Log.info("Retrieved technichians [" + technichiansList.size() + "]");
-            os.writeObject(technichiansList);
+            Log.info("Retrieved technicians [" + techniciansList.size() + "]");
+            os.writeObject(techniciansList);
         }
-        else if(action.equalsIgnoreCase("get available technichians")){
-            List<Employee> technichiansList = controller.getAvailableTechnichians();
+        else if(action.equalsIgnoreCase("get available technicians")){
+            List<Employee> techniciansList = controller.getAvailableTechnicians();
 
-            Log.info("Retrieved available technichians [" + technichiansList.size() + "]");
-            os.writeObject(technichiansList);
+            Log.info("Retrieved available technicians [" + techniciansList.size() + "]");
+            os.writeObject(techniciansList);
         }
         else if(action.equalsIgnoreCase("get messages")){
             List<Message> messageList = controller.getMessages();

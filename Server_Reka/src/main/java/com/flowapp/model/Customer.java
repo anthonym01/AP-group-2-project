@@ -23,8 +23,6 @@ public class Customer extends User implements Serializable {
     @OneToMany(fetch = FetchType.EAGER) //cascade = CascadeType.ALL,
     @JoinColumn(name = "customer_id")
     @OrderBy("dateCreated DESC") // order by date_created
-    
-    //Using a set to remove duplicates from the results set return form hibernate
     private Set<Message> messagesSubmitted;
 
     // Default Constructor
@@ -34,7 +32,7 @@ public class Customer extends User implements Serializable {
         email = "";
         telephone = "";
 
-        messagesSubmitted = new HashSet<>(); // ini a new set
+        messagesSubmitted = new HashSet<>();
     }
 
     // Primary Constructor
@@ -98,7 +96,9 @@ public class Customer extends User implements Serializable {
     // To string method
     @Override
     public String toString() {
-        return "customer -> [ " + super.toString() + " | " + email + " | " + telephone + " | messages submitted: " + messagesSubmitted.size() + " ]";
+        return firstName + " " + lastName;
+
+        // return "Customer -> [ " + super.toString() + " | " + email + " | " + telephone + " | messages submitted: " + messagesSubmitted.size() + " ]";
     }
 
     /* Utility Methods */

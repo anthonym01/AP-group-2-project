@@ -94,6 +94,8 @@ public class Employee extends User implements Serializable {
     // To string method
     @Override
     public String toString() {
+        if(role.equalsIgnoreCase("technician")) return getFirstName() + " " + getLastName();
+        
         return "Staff -> [ " + super.toString() + " | " + role + " | available for chat: " + availableForLiveChat + " | messages assigned: " + assignedMessages.size() + " ]";
     }
 

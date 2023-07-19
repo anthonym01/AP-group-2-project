@@ -30,12 +30,12 @@ public class Server {
     // Initializing the controller object
     private void initializeDB(){
         controller = new Controller();
-       
+
         try {
             controller.connect();
 
             // Uncomment below to generate data for the application...
-            //populateData();
+            // populateData();
         }
         catch (SQLException e) {
             Log.error("Error inside the initializeDB() -> " + e.getMessage());
