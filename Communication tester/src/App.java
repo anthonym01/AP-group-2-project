@@ -9,8 +9,8 @@ public class App {
     JFrame MainView;
 
     public static void main(String[] args) {
-        new App();
-        // test();
+        //new App();
+         test();
 
     }
 
@@ -26,8 +26,8 @@ public class App {
         // test servcer connection
 
         AppClient client = new AppClient();
-        Boolean sucess = client
-                .createCustomer(new Customer("openhimer", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
+        Boolean sucess = client.createCustomer(new Customer("openhimer2", "0000", "fdfsf", "gfggfg", "sdfds@1.1", "834845934"));
+
         System.out.println("Sucess state? " + sucess);
     }
 

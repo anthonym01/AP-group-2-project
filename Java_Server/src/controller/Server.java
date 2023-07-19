@@ -77,11 +77,11 @@ public class Server {
 									Customer tempCustomer = (Customer) InputStream.readObject();// data beamed from client
 									logger.info("Create customer with ID :" + tempCustomer.getId());
 									tempCustomer.create(tempCustomer);
-									OutputStream.writeObject(true);//send reply to client
+									OutputStream.writeObject(true);// send reply to client
 								} catch (Exception e) {
 									// TODO: handle exception
 									logger.warn(e.getMessage());
-									OutputStream.writeObject(false);//send reply to client AFTER FAILIURE
+									OutputStream.writeObject(false);// send reply to client AFTER FAILIURE
 								}
 
 								break;

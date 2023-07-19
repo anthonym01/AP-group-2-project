@@ -79,7 +79,7 @@ public class AppClient {
 	public boolean createCustomer(Customer payload) {// Create a customer Entry
 		try {
 			logger.info("request create customer: " + payload);
-			os.writeObject("create_Customer");// Request customer creation action
+			os.writeObject("create Customer");// Request customer creation action
 			os.writeObject(payload);// beam data to server
 			Boolean sucess = (Boolean) is.readObject();// read reply from server
 			closeConnection();
