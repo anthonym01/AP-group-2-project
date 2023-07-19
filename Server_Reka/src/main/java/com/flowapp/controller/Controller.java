@@ -101,12 +101,12 @@ public class Controller {
         return new ArrayList<>();
     }
 
-    // Retrieve a list of all employee [technichians]
+    // Retrieve a list of all employee [technicians]
     public List<Employee> getTechnicians() {
         try {
             return HibernateDatabase.getTechnicians();
         } catch (IllegalArgumentException | PersistenceException e) {
-            Log.error("Error inside the getTechnichians() -> " + e.getMessage());
+            Log.error("Error inside the getTechnicians() -> " + e.getMessage());
         }
 
         return new ArrayList<>();
